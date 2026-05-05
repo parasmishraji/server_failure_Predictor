@@ -8,7 +8,8 @@ function App() {
 
   useEffect(() => {
     // Connect to FastAPI WebSocket
-    const ws = new WebSocket('ws://localhost:8000/ws/stream');
+    const wsUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/ws/stream';
+    const ws = new WebSocket(wsUrl);
     
     ws.onopen = () => {
       console.log('Connected to ML Stream');
